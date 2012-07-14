@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Sergey Nartimov']
   s.email       = ['just.lest@gmail.com']
-  s.homepage    = 'https://github.com/lest/capistrano-deploy'
+  s.homepage    = 'https://github.com/drdla/capistrano-deploy'
   s.summary     = 'Capistrano deploy recipes'
 
   s.files         = `git ls-files`.split("\n")
