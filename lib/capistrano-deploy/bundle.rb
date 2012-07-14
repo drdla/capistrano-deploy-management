@@ -12,7 +12,7 @@ module CapistranoDeploy
             args = [bundle_flags.to_s]
             args << "--without #{bundle_without.join(' ')}" unless bundle_without.empty?
 
-            run "cd #{deploy_to} && #{bundle_cmd} install #{args.join(' ')}"
+            run "cd #{current_path} && #{bundle_cmd} install #{args.join(' ')}"
           end
         end
       end
