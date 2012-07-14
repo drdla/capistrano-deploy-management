@@ -2,7 +2,7 @@ module CapistranoDeploy
   module Unicorn
     def self.load_into(configuration)
       configuration.load do
-        set(:unicorn_pid) { "`cat #{deploy_to}/tmp/pids/unicorn.pid`" }
+        set(:unicorn_pid) { "`cat #{deploy_to}/shared/pids/unicorn.pid`" }
 
         namespace :unicorn do
           desc 'Reload unicorn'
