@@ -22,7 +22,7 @@ module CapistranoDeploy
 
           desc 'Run migrations'
           task :migrate, :roles => :db, :only => {:primary => true} do
-            run "cd #{deploy_to} && RAILS_ENV=#{rails_env} #{rake} db:migrate"
+            run "cd #{current_path} && RAILS_ENV=#{rails_env} #{rake} db:migrate"
           end
         end
       end
