@@ -7,7 +7,7 @@ module CapistranoDeploy
         namespace :unicorn do
           desc 'Reload unicorn'
           task :reload, :roles => :app, :except => {:no_release => true} do
-            run "kill -HUP #{unicorn_pid}"
+            run "kill -s USR2 'cat #{deploy_to}/shared/pids/unicorn.pid'"
           end
 
           desc 'Stop unicorn'
