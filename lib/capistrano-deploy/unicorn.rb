@@ -2,6 +2,7 @@ module CapistranoDeploy
   module Unicorn
     def self.load_into(configuration)
       configuration.load do
+	set(:unicorn_config) { "#{deploy_to}/current/config/unicorn.rb" }
         set(:unicorn_pidfile) { "#{deploy_to}/shared/pids/unicorn.pid" }
 
         namespace :unicorn do
@@ -17,7 +18,7 @@ module CapistranoDeploy
 
           desc 'Reexecute unicorn'
           task :reexec, :roles => :app, :except => {:no_release => true} do
-            run "test ! -s #{unicorn_pidfile} && unicorn -c #{unicorn_pidfile} -E production -D || echo 'pidfile already exists'"
+            run "test ! -s #{unicorn_pidfile} && unicorn -c #{unicorn_config} -E production -D || echo 'pidfile already exists'"
           end
         end
       end
