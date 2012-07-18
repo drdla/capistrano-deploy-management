@@ -17,7 +17,7 @@ module CapistranoDeploy
 
           desc 'Reexecute unicorn'
           task :reexec, :roles => :app, :except => {:no_release => true} do
-            run "test -s #{unicorn_pidfile} && kill -s USR2 `cat #{unicorn_pidfile}` || echo 'pidfile does not exist'"
+            run "test ! -s #{unicorn_pidfile} && unicorn -c #{unicorn_pidfile} -E production -D || echo 'pidfile already exists'"
           end
         end
       end
