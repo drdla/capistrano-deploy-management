@@ -1,5 +1,5 @@
 - 0.1.17
-  commented out some rails_assets recipes, as they are included in capistrano by default now
+  removed rails_assets recipes, as they are included in capistrano by default now; just load 'deploy/assets' in your Capfile
 
 - 0.1.13 / 0.1.14 / 0.1.15 / 0.1.16
   fix puma configuration
