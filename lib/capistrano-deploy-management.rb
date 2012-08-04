@@ -41,7 +41,10 @@ module CapistranoDeployManagement
         end
 
         task :update do
-          # nothing
+          transaction do
+            update_code
+            create_symlink
+          end
         end
 
         task :restart do
