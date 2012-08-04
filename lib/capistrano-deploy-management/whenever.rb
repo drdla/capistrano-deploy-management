@@ -31,6 +31,8 @@ module CapistranoDeployManagement
           end
         end
 
+        after 'deploy:restart', 'whenever:update_crontab'
+
       end
     end
   end
