@@ -19,7 +19,7 @@ module CapistranoDeployManagement
           task :start, :roles => :app, :except => {:no_release => true} do
             # run "cd #{current_path} && puma -C #{puma_config}"
             # TODO: fix hardcoded port setting by using a config file
-            run "cd #{current_path} && bundle exec rails s puma --port $(#{puma_port}) -e #{rails_env} --pidfile #{puma_pidfile}"
+            run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rails s puma --port 3005 -e #{rails_env} --pidfile #{puma_pidfile}"
           end
 
           desc 'Stop puma.'
