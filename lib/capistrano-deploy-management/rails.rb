@@ -25,6 +25,7 @@ module CapistranoDeployManagement
             run "cd #{current_path} && RAILS_ENV=#{rails_env} #{rake} db:migrate"
           end
         end
+
       end
     end
   end

@@ -2,6 +2,7 @@ module CapistranoDeployManagement
   module Git
     def self.load_into(configuration)
       configuration.load do
+
         ssh_options[:forward_agent] = true
 
         set(:application) { repository.slice(/[^\/:]+?(?=\.git$)/) }
@@ -36,6 +37,7 @@ module CapistranoDeployManagement
             system("git log --pretty=medium --stat #{current_revision}..#{commit}")
           end
         end
+
       end
     end
   end

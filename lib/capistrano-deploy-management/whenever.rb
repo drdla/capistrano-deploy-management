@@ -2,6 +2,7 @@ module CapistranoDeployManagement
   module Whenever
     def self.load_into(configuration)
       configuration.load do
+
         set :whenever_cmd do
           if using_recipe?(:bundle)
             'bundle exec whenever'
@@ -29,6 +30,7 @@ module CapistranoDeployManagement
             run "cd #{current_path} && #{whenever_cmd} --clear-crontab #{whenever_identifier}"
           end
         end
+
       end
     end
   end

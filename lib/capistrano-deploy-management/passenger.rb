@@ -2,6 +2,7 @@ module CapistranoDeployManagement
   module Passenger
     def self.load_into(configuration)
       configuration.load do
+
         namespace :passenger do
           desc 'Restart passenger'
           task :restart, :roles => :app, :except => {:no_release => true} do
@@ -10,6 +11,7 @@ module CapistranoDeployManagement
         end
 
         after 'deploy:restart', 'passenger:restart'
+
       end
     end
   end

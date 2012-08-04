@@ -2,6 +2,7 @@ module CapistranoDeployManagement
   module Bundle
     def self.load_into(configuration)
       configuration.load do
+
         namespace :bundle do
           desc 'Install gems'
           task :install, :except => {:no_release => true} do
@@ -15,6 +16,7 @@ module CapistranoDeployManagement
             run "cd #{current_path} && #{bundle_cmd} install #{args.join(' ')}"
           end
         end
+
       end
     end
   end

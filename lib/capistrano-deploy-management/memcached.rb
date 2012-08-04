@@ -2,6 +2,7 @@ module CapistranoDeployManagement
   module Memcached
     def self.load_into(configuration)
       configuration.load do
+
         namespace :deploy do
           namespace :memcached do
             desc "Restart the Memcache daemon."
@@ -22,6 +23,7 @@ module CapistranoDeployManagement
             end
           end
         end
+
       end
     end
   end

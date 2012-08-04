@@ -2,6 +2,7 @@ module CapistranoDeployManagement
   module RailsAssets
     def self.load_into(configuration)
       configuration.load do
+
         use_recipe :rails
 
         namespace :deploy do
@@ -22,6 +23,10 @@ module CapistranoDeployManagement
             end
           end
         end
+
+        before  'deploy:assets:precompile', 'deploy:assets:clean'
+        after   'deploy:assets:precompile', 'deploy:assets:refresh_cache'
+
       end
     end
   end
