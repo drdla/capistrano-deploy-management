@@ -10,7 +10,7 @@ module CapistranoDeployManagement
         namespace :unicorn do
           desc 'Restart unicorn.'
           task :restart, :roles => :app, :except => {:no_release => true} do
-            # unicorn.stop
+            unicorn.stop
             unicorn.start
           end
 
