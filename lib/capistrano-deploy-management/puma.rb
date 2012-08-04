@@ -16,12 +16,12 @@ module CapistranoDeployManagement
 
           desc 'Start puma.'
           task :start, :roles => :app, :except => {:no_release => true} do
-            run "cd #{current_path} && puma -C #{puma_pidfile} -D"
+            run "cd #{current_path} && puma -C #{puma_pidfile}"
           end
 
           desc 'Stop puma.'
           task :stop, :roles => :app, :except => {:no_release => true} do
-            run "cd #{current_path} && kill $(#{puma_pid})"
+            run "test -s #{puma_pidfile} && kill $(#{puma_pid}) || echo 'puma not running. nothing to kill.'"
           end
         end
 

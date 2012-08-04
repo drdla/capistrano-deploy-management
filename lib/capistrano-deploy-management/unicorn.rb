@@ -22,9 +22,7 @@ module CapistranoDeployManagement
 
           desc 'Stop unicorn.'
           task :stop, :roles => :app do
-            # run "if test -s #{unicorn_pidfile}; then cd #{current_path} && kill $(#{unicorn_pid}) fi"
-            # above line fails with error -c: line 1: syntax error: unexpected end of file
-            run "cd #{current_path} && kill -QUIT $(#{unicorn_pid})"
+            run "test -s #{unicorn_pidfile} && kill $(#{unicorn_pid}) || echo 'unicorn not running. nothing to kill.'"
           end
         end
 

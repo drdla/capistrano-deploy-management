@@ -1,3 +1,6 @@
+- 0.1.10
+  fixed unicorn and puma recipe: only stop server, if pid file exists
+
 - 0.1.9
   updated puma recipe
 
