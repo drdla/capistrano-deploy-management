@@ -20,6 +20,13 @@ module CapistranoDeployManagement
             desc 'Clear application cache (e.g. Memcached).'
             task :refresh_cache, roles: :app do
               run "cd #{current_path} && rake cache:clear RAILS_ENV=#{rails_env}"
+              # Requires this rake task: (include here!?)
+              # namespace :cache do
+              #   desc 'Clear memcache'
+              #   task clear: :environment do
+              #     Rails.cache.clear
+              #   end
+              # end
             end
           end
         end
