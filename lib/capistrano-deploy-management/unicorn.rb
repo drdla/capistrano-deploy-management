@@ -9,19 +9,19 @@ module CapistranoDeployManagement
 
         namespace :unicorn do
           desc 'Restart unicorn.'
-          task :restart, :roles => :app, :except => {:no_release => true} do
+          task :restart, :roles => :app do
             # unicorn.stop
             unicorn.start
             # run "cd #{current_path} && kill -USR2 #{unicorn_pid}"
           end
 
           desc 'Start unicorn.'
-          task :start, :roles => :app, :except => {:no_release => true} do
+          task :start, :roles => :app do
             run "cd #{current_path} && unicorn -c #{unicorn_config} -E production -D"
           end
 
           desc 'Stop unicorn.'
-          task :stop, :roles => :app, :except => {:no_release => true} do
+          task :stop, :roles => :app do
             # run "if test -s #{unicorn_pidfile}; then cd #{current_path} && kill $(#{unicorn_pid}) fi"
             # above line fails with error -c: line 1: syntax error: unexpected end of file
             run "cd #{current_path} && kill -QUIT $(#{unicorn_pid})"
