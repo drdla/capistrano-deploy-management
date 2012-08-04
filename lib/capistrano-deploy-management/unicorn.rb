@@ -17,7 +17,7 @@ module CapistranoDeployManagement
 
           desc 'Start unicorn.'
           task :start, :roles => :app do
-            run "cd #{current_path} && unicorn -c #{unicorn_config} -E production -D"
+            run "cd #{current_path} && unicorn -c #{unicorn_config} -E #{rails_env} -D"
           end
 
           desc 'Stop unicorn.'

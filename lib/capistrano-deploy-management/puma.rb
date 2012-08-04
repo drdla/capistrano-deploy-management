@@ -3,9 +3,10 @@ module CapistranoDeployManagement
     def self.load_into(configuration)
       configuration.load do
 
-        set(:puma_config)  { "#{current_path}/config/puma.rb" }
-        set(:puma_pidfile) { "#{deploy_to}/shared/pids/puma.pid" }
-        set(:puma_pid)     { "cat #{deploy_to}/shared/pids/puma.pid" }
+        # set(:puma_config)   { "#{current_path}/config/puma.rb" }
+        set(:puma_port)     { "cat #{current_path}/config/puma.rb" }
+        set(:puma_pidfile)  { "#{deploy_to}/shared/pids/puma.pid" }
+        set(:puma_pid)      { "cat #{deploy_to}/shared/pids/puma.pid" }
 
         namespace :puma do
           desc 'Restart puma.'
@@ -16,7 +17,9 @@ module CapistranoDeployManagement
 
           desc 'Start puma.'
           task :start, :roles => :app, :except => {:no_release => true} do
-            run "cd #{current_path} && puma -C #{puma_config}"
+            # run "cd #{current_path} && puma -C #{puma_config}"
+            # TODO: fix hardcoded port setting by using a config file
+            run "cd #{current_path} && bundle exec rails s puma --port $(#{puma_port}) -e #{rails_env} --pidfile #{puma_pidfile}"
           end
 
           desc 'Stop puma.'

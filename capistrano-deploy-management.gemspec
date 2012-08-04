@@ -1,7 +1,8 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name        = 'capistrano-deploy-management'
-  s.version     = '0.1.11'
+  s.description = 'Collection of Capistrano recipes for deploying Rails apps into high-performance environments'
+  s.version     = '0.1.14'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Dominik Rodler']
   s.email       = ['dominik.rodler@gmail.com']
