@@ -4,7 +4,6 @@ module CapistranoDeployManagement
       configuration.load do
 
         # set(:puma_config)   { "#{current_path}/config/puma.rb" }
-        set(:puma_port)     { "cat #{current_path}/config/puma.rb" }
         set(:puma_pidfile)  { "#{deploy_to}/shared/pids/puma.pid" }
         set(:puma_pid)      { "cat #{deploy_to}/shared/pids/puma.pid" }
 
@@ -19,7 +18,8 @@ module CapistranoDeployManagement
           task :start, :roles => :app, :except => {:no_release => true} do
             # run "cd #{current_path} && puma -C #{puma_config}"
             # TODO: fix hardcoded port setting by using a config file
-            run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rails s puma --port 3005 -e #{rails_env} --pidfile #{puma_pidfile}"
+            # run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rails s puma --port 3005 --pidfile #{puma_pidfile} -e #{rails_env}"
+            run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rails s puma --port 3005 -e #{rails_env}"
           end
 
           desc 'Stop puma.'

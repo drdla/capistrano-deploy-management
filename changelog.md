@@ -1,4 +1,7 @@
-- 0.1.13 / 0.1.14 / 0.1.15
+- 0.1.17
+  commented out some rails_assets recipes, as they are included in capistrano by default now
+
+- 0.1.13 / 0.1.14 / 0.1.15 / 0.1.16
   fix puma configuration
 
 - 0.1.10 / 0.1.11 / 0.1.12
