@@ -3,8 +3,9 @@ module CapistranoDeployManagement
     def self.load_into(configuration)
       configuration.load do
 
-        set(:puma_config) { "#{current_path}/config/puma.rb" }
-        set(:puma_pidfile) { "cat #{deploy_to}/shared/pids/puma.pid" }
+        set(:puma_config)  { "#{current_path}/config/puma.rb" }
+        set(:puma_pidfile) { "#{deploy_to}/shared/pids/puma.pid" }
+        set(:puma_pid)     { "cat #{deploy_to}/shared/pids/puma.pid" }
 
         namespace :puma do
           desc 'Restart puma.'
@@ -15,12 +16,12 @@ module CapistranoDeployManagement
 
           desc 'Start puma.'
           task :start, :roles => :app, :except => {:no_release => true} do
-            run "cd #{current_path} && puma -c #{puma_pidfile} -E production -D"
+            run "cd #{current_path} && puma -C #{puma_pidfile} -D"
           end
 
           desc 'Stop puma.'
           task :stop, :roles => :app, :except => {:no_release => true} do
-            run "cd #{current_path} && kill $(#{puma_pidfile})"
+            run "cd #{current_path} && kill $(#{puma_pid})"
           end
         end
 

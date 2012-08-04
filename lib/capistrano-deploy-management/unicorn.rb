@@ -10,7 +10,7 @@ module CapistranoDeployManagement
         namespace :unicorn do
           desc 'Restart unicorn.'
           task :restart, :roles => :app do
-            # unicorn.stop
+            unicorn.stop
             unicorn.start
             # run "cd #{current_path} && kill -USR2 #{unicorn_pid}"
           end
