@@ -16,7 +16,7 @@ module CapistranoDeployManagement
 
           desc 'Start puma.'
           task :start, :roles => :app, :except => {:no_release => true} do
-            run "cd #{current_path} && puma -C #{puma_pidfile}"
+            run "cd #{current_path} && puma -C #{puma_config}"
           end
 
           desc 'Stop puma.'
