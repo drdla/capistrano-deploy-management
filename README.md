@@ -1,4 +1,4 @@
-Capistrano deploy recipes [![TravisCI](https://secure.travis-ci.org/lest/capistrano-deploy.png?branch=master)](http://travis-ci.org/lest/capistrano-deploy) [![Gemnasium](https://gemnasium.com/lest/capistrano-deploy.png)](https://gemnasium.com/lest/capistrano-deploy)
+Capistrano deploy recipes [![TravisCI](https://secure.travis-ci.org/lest/capistrano-deploy-management.png?branch=master)](http://travis-ci.org/lest/capistrano-deploy-management) [![Gemnasium](https://gemnasium.com/lest/capistrano-deploy-management.png)](https://gemnasium.com/lest/capistrano-deploy-management)
 =========================
 
 Fast git-based deploy process inspired by https://github.com/blog/470-deployment-script-spring-cleaning.
@@ -9,13 +9,13 @@ Quickstart with Git and Rails
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'capistrano-deploy', :group => :development, :require => false
+gem 'capistrano-deploy-management', :group => :development, :require => false
 ```
 
 Create a file named `Capfile` in your project root directory:
 
 ```ruby
-require 'capistrano-deploy'
+require 'capistrano-deploy-management'
 use_recipes :git, :bundle, :rails
 
 server 'server name or ip address', :web, :app, :db, :primary => true
@@ -135,6 +135,21 @@ You can setup callback to reload unicorn after deploy is done:
 
 ```ruby
 after 'deploy:restart', 'unicorn:reload'
+```
+
+Puma
+-------
+
+Use recipe:
+
+```ruby
+use_recipe :puma
+```
+
+You can setup callback to reload puma after deploy is done:
+
+```ruby
+after 'deploy:restart', 'puma:reload'
 ```
 
 Whenever

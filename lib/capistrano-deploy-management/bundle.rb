@@ -1,4 +1,4 @@
-module CapistranoDeploy
+module CapistranoDeployManagement
   module Bundle
     def self.load_into(configuration)
       configuration.load do

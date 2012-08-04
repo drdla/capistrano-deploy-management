@@ -1,6 +1,6 @@
 source :rubygems
 
-# Specify your gem's dependencies in capistrano-deploy.gemspec
+# Specify your gem's dependencies in capistrano-deploy-management.gemspec
 gemspec
 
 gem 'rake'
