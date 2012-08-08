@@ -22,7 +22,8 @@ module CapistranoDeployManagement
 
           desc 'Stop unicorn.'
           task :stop, :roles => :app do
-            run "test -s #{unicorn_pidfile} && kill $(#{unicorn_pid}) || echo 'unicorn not running. nothing to kill.'"
+            # run "cd #{current_path} && kill $(#{unicorn_pid})"
+            run "cd #{current_path} && test -s #{unicorn_pidfile} && kill $(#{unicorn_pid}) || echo 'Unicorn not running. Nothing to kill.'"
           end
         end
 
