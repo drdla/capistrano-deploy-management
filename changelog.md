@@ -1,5 +1,8 @@
-- 0.1.19
-  unicorn restart
+- 0.1.21 / 0.1.21
+  attempt to speed up bundle install using --local flag // reverted, because some gems are OS-specific and make bundle install fail
+
+- 0.1.19 / 0.1.20
+  improved unicorn restart
 
 - 0.1.17 / 0.1.18
   removed rails_assets recipes, as they are included in capistrano by default now; just load 'deploy/assets' in your Capfile

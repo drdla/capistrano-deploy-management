@@ -10,9 +10,10 @@ module CapistranoDeployManagement
         namespace :unicorn do
           desc 'Restart unicorn.'
           task :restart, :roles => :app do
+            # FIXME: PID does not exist, thus restarting fails
+            # run "cd #{current_path} && kill -s USR2 #{unicorn_pid}"
             unicorn.stop
             unicorn.start
-            # run "cd #{current_path} && kill -USR2 #{unicorn_pid}"
           end
 
           desc 'Start unicorn.'
