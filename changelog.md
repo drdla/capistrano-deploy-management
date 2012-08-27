@@ -1,4 +1,10 @@
-- 0.1.21 / 0.1.21
+- 0.1.34
+  start unicon using bundle exec
+
+- 0.1.23 / 0.1.24 / 0.1.25 / 0.1.26 / 0.1.27 / 0.1.28 / 0.1.28 / 0.1.30 / 0.1.31 / 0.1.32 / 0.1.32
+  work in progress: only precompile assets if any assets have changed
+
+- 0.1.21 / 0.1.22
   attempt to speed up bundle install using --local flag // reverted, because some gems are OS-specific and make bundle install fail
 
 - 0.1.19 / 0.1.20
