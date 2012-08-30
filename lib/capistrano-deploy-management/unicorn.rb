@@ -11,7 +11,7 @@ module CapistranoDeployManagement
           desc 'Restart unicorn.'
           task :restart, :roles => :app do
             # FIXME: PID does not exist, thus restarting fails
-            # run "cd #{current_path} && kill -s USR2 #{unicorn_pid}"
+            # run "#{try_sudo} kill -s USR2 $(#{unicorn_pid})"
             unicorn.stop
             unicorn.start
           end
@@ -23,8 +23,7 @@ module CapistranoDeployManagement
 
           desc 'Stop unicorn.'
           task :stop, :roles => :app do
-            # run "cd #{current_path} && kill $(#{unicorn_pid})"
-            run "cd #{current_path} && test -s #{unicorn_pidfile} && kill $(#{unicorn_pid}) || echo 'Unicorn not running. Nothing to kill.'"
+            run "cd #{current_path} && test -s #{unicorn_pidfile} && #{try_sudo} kill $(#{unicorn_pid}) || echo 'Unicorn not running. Nothing to kill.'"
           end
         end
 
