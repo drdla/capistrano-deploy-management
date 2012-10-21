@@ -1,3 +1,6 @@
+- 0.1.37 / 0.1.38
+  try to fix stopping and restarting of unicorn
+
 - 0.1.34 / 0.1.35 / 0.1.36
   start unicon using bundle exec
 
